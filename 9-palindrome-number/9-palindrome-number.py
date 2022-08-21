@@ -10,5 +10,6 @@ class Solution:
         while temp:
             result = result * 10 + temp%10
             temp = temp//10
+        
         return result == x
         
