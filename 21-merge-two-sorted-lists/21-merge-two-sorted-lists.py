@@ -20,17 +20,11 @@ class Solution:
             temp.next = node
             temp = temp.next
         
-        while list1:
-            node = ListNode(list1.val)
-            temp.next = node
-            temp = temp.next
-            list1 = list1.next
+        if list1:
+            temp.next = list1
         
-        while list2:
-            node = ListNode(list2.val)
-            temp.next = node
-            temp = temp.next
-            list2 = list2.next
+        if list2:
+            temp.next = list2
         return result.next
                 
         
