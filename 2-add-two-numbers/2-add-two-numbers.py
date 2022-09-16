@@ -8,31 +8,28 @@ class Solution:
         result = ListNode()
         temp = result
         carry = 0
-        
-        while l1 is not None and l2 is not None:
-            total = l1.val + l2.val + carry
-            carry = total//10
-            total = total%10
-            node = ListNode(total)
+        while l1 and l2:
+            add = l1.val + l2.val + carry
+            carry = add // 10
+            div = add % 10
+            node = ListNode(div)
             temp.next = node
             temp = temp.next
             l1 = l1.next
             l2 = l2.next
-        
-        while l1 is not None:
-            total = l1.val + carry
-            carry = total//10
-            total = total%10
-            node = ListNode(total)
+        while l1:
+            add = l1.val + carry
+            carry = add // 10
+            div = add % 10
+            node = ListNode(div)
             temp.next = node
             temp = temp.next
             l1 = l1.next
-        
-        while l2 is not None:
-            total = l2.val + carry
-            carry = total//10
-            total = total%10
-            node = ListNode(total)
+        while l2:
+            add = l2.val + carry
+            carry = add // 10
+            div = add % 10
+            node = ListNode(div)
             temp.next = node
             temp = temp.next
             l2 = l2.next
@@ -43,3 +40,6 @@ class Solution:
             temp = temp.next
         
         return result.next
+        
+            
+        
