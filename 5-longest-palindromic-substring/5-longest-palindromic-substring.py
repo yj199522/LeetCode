@@ -1,14 +1,22 @@
 class Solution:
-    def longestPalindrome(self, s):
-        lenS = len(s)
-        if lenS <= 1: return s
-        minStart, maxLen, i = 0, 1, 0
-        while i < lenS:
-            if lenS - i <= maxLen / 2: break
-            j, k = i, i
-            while k < lenS - 1 and s[k] == s[k + 1]: k += 1
-            i = k + 1
-            while k < lenS - 1 and j and s[k + 1] == s[j - 1]:  k, j = k + 1, j - 1
-            if k - j + 1 > maxLen: minStart, maxLen = j, k - j + 1
-        return s[minStart: minStart + maxLen]
+    def longestPalindrome(self, s: str) -> str:
+        def palindrome(s, l, r): 
+            while l>=0 and r<len(s) and s[l] == s[r]:
+                l-=1
+                r+=1
+            return s[(l+1):r]
+        
+        res = ''
+        i=0
+        while i<len(s):
+            s1 = palindrome(s,i,i)#Find palindrome when center is i (odd number of words)
+            s2 = palindrome(s,i,i+1)#find palindrome when center is i and i+1 (even number of words)
+            if len(s1)>len(s2):
+                if len(s1)>len(res):
+                    res = s1
+            else:
+                if len(s2)>len(res):
+                    res = s2
+            i+=1
+        return res
         
