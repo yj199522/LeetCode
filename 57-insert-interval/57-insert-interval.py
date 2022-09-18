@@ -1,6 +1,8 @@
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         intervals.append(newInterval)
+        if len(intervals) == 1:
+            return intervals
         def sortFirst(val):
             return val[0]
         intervals.sort(key=sortFirst)
