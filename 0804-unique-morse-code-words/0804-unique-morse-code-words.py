@@ -1,14 +1,16 @@
 class Solution:
     def uniqueMorseRepresentations(self, words: List[str]) -> int:
-        morse_code_array = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        morseCodeList = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
         if len(words) < 2:
             return len(words)
-        result = set()
+        result = []
+        minValue = ord('a')
         for word in words:
-            word = word.lower()
-            transformations = ""
-            for chr in word:
-                transformations += morse_code_array[ord(chr) - 97]
-            result.add(transformations)
+            morseCodeString = ''
+            for letter in word:
+                indexToFindMorseCode = ord(letter) - minValue
+                morseCodeString+=morseCodeList[indexToFindMorseCode]
+            if morseCodeString not in result:
+                result.append(morseCodeString)
         return len(result)
                 
