@@ -5,16 +5,18 @@ class Solution:
         mapping = {}
         if len(list2) > len(list1):
             list1, list2 = list2, list1
-        for index, word in enumerate(list1):
-            mapping[word] = index
-        for index, word in enumerate(list2):
-            if word in mapping:
-                sumValue = mapping[word] + index
+    
+        for index in range(len(list1)):
+            mapping[list1[index]] = index
+    
+        for index in range(len(list2)):
+            if list2[index] in mapping:
+                sumValue = mapping[list2[index]] + index
                 if minValue >  sumValue:
                     minValue = sumValue
-                    result = [word]
+                    result = [list2[index]]
                 elif minValue == sumValue:
-                    result.append(word)
+                    result.append(list2[index])
 
         # for index1, wordforlist1 in enumerate(list1):
         #     if wordforlist1 not in list2:
