@@ -1,24 +1,23 @@
 class Solution:
     def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
-        hashmap = {}
-        for i in range(len(list1)):   #step 1
-            hashmap[list1[i]] = i
-        
-        res = []
-
-        minsum = float("inf")   #step 2
-        
-        for j in range(len(list2)):    #step 3
-            if list2[j] in hashmap:
-                Sum = j + hashmap[list2[j]]    #step 3a
-                
-                if Sum < minsum:   #step 3b
-                    minsum = Sum
-                    res = []
-                    res.append(list2[j])
-                elif Sum == minsum:     #step 3c
-                    res.append(list2[j])
-        return res
+        result = []
+        minValue = float('inf')
+        mapping = {}
+        if len(list2) > len(list1):
+            list1, list2 = list2, list1
+    
+        for index in range(len(list1)):
+            mapping[list1[index]] = index
+    
+        for index in range(len(list2)):
+            if list2[index] in mapping:
+                sumValue = mapping[list2[index]] + index
+                if minValue >  sumValue:
+                    minValue = sumValue
+                    result = [list2[index]]
+                elif minValue == sumValue:
+                    result.append(list2[index])
+        return result
                 
                 
         
