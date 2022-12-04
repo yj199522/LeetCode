@@ -1,13 +1,15 @@
 class Solution:
     def commonChars(self, A: List[str]) -> List[str]:
-        if len(A)<2 : return A
-        alist = set(A[0])     # make a set from first string
-        res = []
-        for one in alist:
-            n = min([a_word.count(one) for a_word in A])     # count min frequency of every letter in every word
-            if n:    # if n>0 , we append this letter n times
-                res += [one]*n
-        return res
+        if len(A) < 2:
+            return A
+        
+        firstWord = set(A[0])
+        result = []
+        for letter in firstWord:
+            minValue = min([word.count(letter) for word in A])
+            if minValue:
+                result+=[letter]*minValue
+        return result
 
         
         
