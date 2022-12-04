@@ -1,14 +1,6 @@
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        lookup = {char:index for index, char in enumerate(order)}
-        words2 = []
-        for word in words:
-            temp = []
-            for letter in word:
-                temp.append(lookup[letter])
-            words2.append(temp)
-        for index in range(1, len(words2)):
-            if words2[index-1] > words2[index]:
-                return False
-        return True
+        mp = {c : i for i, c in enumerate(order)}        
+        words = [[mp[c] for c in word] for word in words]
+        return all(word1 <= word2 for word1, word2 in zip(words, words[1:]))
         
