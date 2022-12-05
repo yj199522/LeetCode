@@ -1,12 +1,18 @@
 class Solution:
     def kthDistinct(self, arr: List[str], k: int) -> str:
-        c = collections.Counter(arr)
+        dic={}
+        c=0
         for i in arr:
-            if c[i] == 1:
-                k-=1
-                if k== 0:
+            if i not in dic:
+                dic[i]=1
+            else:
+                dic[i]+=1
+        for i in arr:
+            if dic[i]==1:
+                c+=1
+                if c==k:
                     return i
-        return ""
+        return ''
         # result = ''
         # duplicate = []
         # start = 1
