@@ -3,7 +3,6 @@ class Solution:
         maxWord = -1
         for sentence in sentences:
             splitSent = len(sentence.split(' '))
-            if  splitSent > maxWord:
-                maxWord = splitSent
+            maxWord = max(maxWord, splitSent)
         return maxWord
         
